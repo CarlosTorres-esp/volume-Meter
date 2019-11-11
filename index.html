@@ -2,75 +2,15 @@
 <html lang="en">
 <title>Sonometro</title>
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <span style="font-size:30px;cursor:pointer; text-align:left" onclick="openNav()">&#9776; Menú</span>
-
-
-
-
-
-<style>
-/* Style the header */
-header {
-  background-color: #666;
-  padding: 30px;
-  text-align: center;
-  color: white;
-}
-
-/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
-@media (max-width: 600px) {
-  nav, article {
-    width: 100%;
-    height: auto;
-  }
-}
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-  padding: 38px;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-</style>
+<link rel="stylesheet" type="text/css" href="./css/index.css">
+<!-- Include the volume meter component -->
+<script src="volume-meter.js"></script>
+<!-- Include the main app logic -->
+<script src="main.js"></script>
 </head>
-
-
-
-
 <header>
     <h2>Sonometro</h2>
     <p>Este ejemplo muestra cómo implementar un medidor de volumen indicador de clip en Web Audio,
@@ -80,10 +20,10 @@ header {
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="#">Inicio</a>
             <a href="#">Consulta</a>
-            <a href="./graficaBolitas.html">Sensores de gravedad</a>
-            <a href="./graficaCirculo.html">Velocidad del sonido</a>
-            <a href="./graficaNiveles.html">Vibraciones del sonido</a>
-            <a href="./alertas.html">Alertas</a>
+            <a href="../graficaBolitas.html">Sensores de gravedad</a>
+            <a href="../graficaCirculo.html">Velocidad del sonido</a>
+            <a href="../graficaNiveles.html">Vibraciones del sonido</a>
+            <a href="../alertas.html">Alertas</a>
             <a href="#">Información</a>
           </div>
 </header>
@@ -105,23 +45,12 @@ header {
     se usa para destruir el nodo 
     (es importante desconectar y eliminar el controlador de eventos para cualquier ScriptProcessor).</p></b>
 
+
+
+    <p>This sample shows how to implement a clip-indicating volume meter in Web Audio, using a ScriptProcessor.  It's necessary to use a ScriptProcessor in order to not miss any clipping samples - otherwise you could implement this using a RealtimeAnalyser to only grab samples when necessary.</p>
+		<canvas id="meter" width="500" height="50"></canvas>
 <body>
   
-
-
-
-
-<!-- Este script es para darle funcionalidad a la barra desplegable del menu lateral -->
-<script>
-    function openNav() {
-      document.getElementById("slideBar").style.width = "250px";
-    }
-    
-    function closeNav() {
-      document.getElementById("slideBar").style.width = "0";
-    }
-    </script>
-<!-- Este script es para darle funcionalidad a la barra desplegable del menu lateral -->
-
+<script src="home.js"></script>
 </body>
 </html>
