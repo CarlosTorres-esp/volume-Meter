@@ -1,56 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <title>Sonometro</title>
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<span style="font-size:30px;cursor:pointer; text-align:left" onclick="openNav()">&#9776; Menú</span>
-<link rel="stylesheet" type="text/css" href="./css/index.css">
-<!-- Include the volume meter component -->
-<script src="volume-meter.js"></script>
-<!-- Include the main app logic -->
-<script src="main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <span style="font-size:30px;cursor:pointer; text-align:left" onclick="openNav()">&#9776; Menú</span>
+  <img src="EcoLevels.png" height="45px" width="175px" align="right">
+  <link rel="stylesheet" type="text/css" href="./css/index.css">
+  <!-- Include the volume meter component -->
+  <script src="volume-meter.js"></script>
+  <!-- Include the main app logic -->
+  <script src="main.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- Script for insert sweetalert -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <header>
-    <h2>Sonometro</h2>
-    <p>Este ejemplo muestra cómo implementar un medidor de volumen indicador de clip en Web Audio,
-        utilizando un ScriptProcessor. Es necesario usar un ScriptProcessor para no perder ninguna muestra de recorte; 
-        de lo contrario, podría implementar esto usando un RealtimeAnalyser para tomar solo muestras cuando sea necesario.</p>
-        <div id="slideBar" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#">Inicio</a>
-            <a href="#">Consulta</a>
-            <a href="../graficaBolitas.html">Sensores de gravedad</a>
-            <a href="../graficaCirculo.html">Velocidad del sonido</a>
-            <a href="../graficaNiveles.html">Vibraciones del sonido</a>
-            <a href="../alertas.html">Alertas</a>
-            <a href="#">Información</a>
-          </div>
+  <h2>Sonometro</h2>
+  <p>Este ejemplo muestra cómo implementar un medidor de volumen indicador de clip en Web Audio,
+    utilizando un ScriptProcessor. Es necesario usar un ScriptProcessor para no perder ninguna muestra de recorte;
+    de lo contrario, podría implementar esto usando un RealtimeAnalyser para tomar solo muestras cuando sea necesario.
+  </p>
+  <div id="slideBar" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html">Inicio</a>
+    <a href="consulta.html">Consulta</a>
+    <button type="button" class="btn btn-danger" onclick="closeNav()">Close</button>
+  </div>
 </header>
 
-<p><b>A continuacion se puede comenzar a estudiar el audio con esta funcionalidad</p></b>
-<p><b>audioContext: el AudioContext que estás usando.
-    clipLevel: el nivel (0 a 1) que consideraría "recorte". El valor predeterminado es 0,98.
-    promediado: cuán "suavizado" le gustaría que el medidor fuera con el tiempo. Debe estar entre 0 y menos de 1. 
-    El valor predeterminado es 0,95.
-    clipLag: cuánto tiempo desea que se muestre el indicador de "recorte" después de que se haya producido el 
-    recorte, en milisegundos. El valor predeterminado es 750 ms.
-    
-    meter.checkClipping ();
-    
-    devuelve verdadero si el nodo se ha recortado en los últimos milisegundos de clipLag.
-    
-    meter.shutdown ();
-    
-    se usa para destruir el nodo 
-    (es importante desconectar y eliminar el controlador de eventos para cualquier ScriptProcessor).</p></b>
+
+
+<body  style="background-color:#cbe4d3">
+  <p><b>A continuacion se puede comenzar a estudiar el audio con esta funcionalidad</p></b>
+  <p><b>audioContext: el AudioContext que estás usando.
+      clipLevel: el nivel (0 a 1) que consideraría "recorte". El valor predeterminado es 0,98.
+      promediado: cuán "suavizado" le gustaría que el medidor fuera con el tiempo. Debe estar entre 0 y menos de 1.
+      El valor predeterminado es 0,95.
+      clipLag: cuánto tiempo desea que se muestre el indicador de "recorte" después de que se haya producido el
+      recorte, en milisegundos. El valor predeterminado es 750 ms.
+
+      meter.checkClipping ();
+
+      devuelve verdadero si el nodo se ha recortado en los últimos milisegundos de clipLag.
+
+      meter.shutdown ();
+
+      Se usa para destruir el nodo
+      (es importante desconectar y eliminar el controlador de eventos para cualquier ScriptProcessor).</p></b>
 
 
 
-    <p>This sample shows how to implement a clip-indicating volume meter in Web Audio, using a ScriptProcessor.  It's necessary to use a ScriptProcessor in order to not miss any clipping samples - otherwise you could implement this using a RealtimeAnalyser to only grab samples when necessary.</p>
-		<canvas id="meter" width="500" height="50"></canvas>
-<body>
+  <p>Este ejemplo muestra cómo implementar un medidor de volumen indicador de clip en Web Audio,
+    utilizando un ScriptProcessor. Es necesario usar un ScriptProcessor para no perder ninguna muestra de recorte;
+    de ​​lo contrario, podría implementar esto usando un RealtimeAnalyser
+    para tomar solo muestras cuando sea necesario.</p>
   
-<script src="home.js"></script>
+  
+      <canvas id="meter" width="500" height="200"></canvas>
+      <h1><b>Hecho por: </b></h1>
+      <h2><b><i>Alcantara GarcíaJose Luis, Torres Esparza Carlos Daniel y Tovar Tovar Alondra</i></b></h2>
+
+    <footer class="footer">
+            <div class="footer-terms-conditions">
+
+              <a title="Términos y condiciones de Uso">Términos y condiciones de Uso</a>
+
+              <a title="Términos y Condiciones de Contratación">Términos y Condiciones de Contratación</a>
+
+              <a title="Política de privacidad">Política de privacidad</a>
+            </div>
+
+            <div class="footer-institutional">
+              <div>
+
+                <span class="copyright-text">© Copyright 2019 Ecolevels</span>
+              </div>
+            </div>
+  </footer>
 </body>
+<script src="home.js"></script>
+
 </html>
