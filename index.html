@@ -1,56 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <title>Sonometro</title>
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<span style="font-size:30px;cursor:pointer; text-align:left" onclick="openNav()">&#9776; Menú</span>
-<link rel="stylesheet" type="text/css" href="./css/index.css">
-<!-- Include the volume meter component -->
-<script src="volume-meter.js"></script>
-<!-- Include the main app logic -->
-<script src="main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <span style="font-size:30px;cursor:pointer; text-align:left" onclick="openNav()">&#9776; Menú</span>
+  <link rel="stylesheet" type="text/css" href="./css/index.css">
+  <!-- Include the volume meter component -->
+  <script src="volume-meter.js"></script>
+  <!-- Include the main app logic -->
+  <script src="main.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- Script for insert sweetalert -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <header>
-    <h2>Sonometro</h2>
-    <p>Este ejemplo muestra cómo implementar un medidor de volumen indicador de clip en Web Audio,
-        utilizando un ScriptProcessor. Es necesario usar un ScriptProcessor para no perder ninguna muestra de recorte; 
-        de lo contrario, podría implementar esto usando un RealtimeAnalyser para tomar solo muestras cuando sea necesario.</p>
-        <div id="slideBar" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#">Inicio</a>
-            <a href="#">Consulta</a>
-            <a href="../graficaBolitas.html">Sensores de gravedad</a>
-            <a href="../graficaCirculo.html">Velocidad del sonido</a>
-            <a href="../graficaNiveles.html">Vibraciones del sonido</a>
-            <a href="../alertas.html">Alertas</a>
-            <a href="#">Información</a>
-          </div>
+  <h2>Sonometro</h2>
+  <p>Este ejemplo muestra cómo implementar un medidor de volumen indicador de clip en Web Audio,
+    utilizando un ScriptProcessor. Es necesario usar un ScriptProcessor para no perder ninguna muestra de recorte;
+    de lo contrario, podría implementar esto usando un RealtimeAnalyser para tomar solo muestras cuando sea necesario.
+  </p>
+  <div id="slideBar" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html">Inicio</a>
+    <a href="consulta.html">Consulta</a>
+    <a href="#">Información</a>
+  </div>
 </header>
 
-<p><b>A continuacion se puede comenzar a estudiar el audio con esta funcionalidad</p></b>
-<p><b>audioContext: el AudioContext que estás usando.
-    clipLevel: el nivel (0 a 1) que consideraría "recorte". El valor predeterminado es 0,98.
-    promediado: cuán "suavizado" le gustaría que el medidor fuera con el tiempo. Debe estar entre 0 y menos de 1. 
-    El valor predeterminado es 0,95.
-    clipLag: cuánto tiempo desea que se muestre el indicador de "recorte" después de que se haya producido el 
-    recorte, en milisegundos. El valor predeterminado es 750 ms.
-    
-    meter.checkClipping ();
-    
-    devuelve verdadero si el nodo se ha recortado en los últimos milisegundos de clipLag.
-    
-    meter.shutdown ();
-    
-    se usa para destruir el nodo 
-    (es importante desconectar y eliminar el controlador de eventos para cualquier ScriptProcessor).</p></b>
 
 
-
-    <p>This sample shows how to implement a clip-indicating volume meter in Web Audio, using a ScriptProcessor.  It's necessary to use a ScriptProcessor in order to not miss any clipping samples - otherwise you could implement this using a RealtimeAnalyser to only grab samples when necessary.</p>
-		<canvas id="meter" width="500" height="50"></canvas>
 <body>
+  <p><b>A continuacion se puede comenzar a estudiar el audio con esta funcionalidad</p></b>
+  <p><b>audioContext: el AudioContext que estás usando.
+      clipLevel: el nivel (0 a 1) que consideraría "recorte". El valor predeterminado es 0,98.
+      promediado: cuán "suavizado" le gustaría que el medidor fuera con el tiempo. Debe estar entre 0 y menos de 1.
+      El valor predeterminado es 0,95.
+      clipLag: cuánto tiempo desea que se muestre el indicador de "recorte" después de que se haya producido el
+      recorte, en milisegundos. El valor predeterminado es 750 ms.
+
+      meter.checkClipping ();
+
+      devuelve verdadero si el nodo se ha recortado en los últimos milisegundos de clipLag.
+
+      meter.shutdown ();
+
+      Se usa para destruir el nodo
+      (es importante desconectar y eliminar el controlador de eventos para cualquier ScriptProcessor).</p></b>
+
+
+
+  <p>Este ejemplo muestra cómo implementar un medidor de volumen indicador de clip en Web Audio,
+    utilizando un ScriptProcessor. Es necesario usar un ScriptProcessor para no perder ninguna muestra de recorte;
+    de ​​lo contrario, podría implementar esto usando un RealtimeAnalyser
+    para tomar solo muestras cuando sea necesario.</p>
+  <canvas id="meter" width="500" height="100"></canvas>
+
+  <footer class="footer" id="footer">
+    <div class="layout-container">
+      <div id="footer-container">
+<ul class="footer-top">
+
+  <li class="footer-column menu-component menuInstance" data-menu="none">
+    <span><strong>Nuestra App esta disponible en...</strong></span>
+    <i class="icon-g icon-g-chevron-down"></i>
+    <ul class="footer-links-content">
+      
+      <li class="country-links"><a title="Argentina"><img src="https://img10.naventcdn.com/home/RPHOMv2.8.1-RC1/images/flag-argentina.svg" class="country-flag">Argentina</a></li>
+                  
+      <li class="country-links"><a  title="Brasil"><img src="https://img10.naventcdn.com/home/RPHOMv2.8.1-RC1/images/flag-brasil.svg" class="country-flag">Brasil</a></li>
+            
+      <li class="country-links"><a  title="Perú"><img src="https://img10.naventcdn.com/home/RPHOMv2.8.1-RC1/images/flag-peru.svg" class="country-flag">Perú</a></li>
+            
+      <li class="country-links"><a  title="Ecuador"><img src="https://img10.naventcdn.com/home/RPHOMv2.8.1-RC1/images/flag-ecuador.svg" class="country-flag">Ecuador</a></li>
+            
+      <li class="country-links"><a  title="Venezuela"><img src="https://img10.naventcdn.com/home/RPHOMv2.8.1-RC1/images/flag-venezuela.svg" class="country-flag">Venezuela</a></li>
   
-<script src="home.js"></script>
+      <li class="country-links"><a  title="Panamá"><img src="https://img10.naventcdn.com/home/RPHOMv2.8.1-RC1/images/flag-panama.svg" class="country-flag">Panamá</a></li>
+      
+    </ul>
+  </li>
+
+  <li class="footer-column menu-component menuInstance" data-menu="none">
+    <span><strong>Síguenos</strong></span>
+    <i class="icon-g icon-g-chevron-down"></i>
+    <ul class="footer-social-content">
+      
+      <li class="footer-social"><a title="Twitter" ><i class="icon-g icon-g-twitter"></i> <span>Twitter</span></a></li>      
+      <li class="footer-social"><a title="Instagram" ><i class="icon-g icon-g-instagram"></i> <span>Instagram</span></a></li>      
+      <li class="footer-social"><a title="Facebook" ><i class="icon-g icon-g-facebook"></i> <span>Facebook</span></a></li>
+              
+    </ul>
+  </li>
+</ul>
+
+
+<div class="footer-bottom">
+  <div class="footer-terms-conditions">
+    
+    <a title="Términos y condiciones de Uso">Términos y condiciones de Uso</a>
+    
+    
+    <a title="Términos y Condiciones de Contratación">Términos y Condiciones de Contratación</a>
+    
+    
+    <a title="Política de privacidad">Política de privacidad</a>
+    
+    
+  </div>
+  <div class="footer-institutional">
+    <div>
+      
+      <span class="copyright-text">© Copyright 2019 inmuebles24.com</span>
+    </div>
+    <a href="http://www.navent.com" title="Todas las empresas de Navent" target="_blank">
+      <span class="logo-navent-text"><b>Ver todas las empresas de</b></span>
+      <img src="data:imagepng;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAAAeCAMAAABE8YNVAAAAhFBMVEUAAAD////7+/vDw8NmZmb+/v5qampnZ2dkZGT5+fn9/f1iYmLq6urQ0NDs7OzMzMzU1NTu7u7Hx8fFxcWEhIT09PRgYGDAwMCjo6NeXl61tbX29vaUlJR8fHxubm7l5eXa2trf39+Li4t1dXXW1taoqKiZmZm7u7uwsLCenp6QkJDw8PAdTfO8AAAAAXRSTlMAQObYZgAAA8JJREFUOMulVFcWnDAMxMbIld7ZpW3f5P73ywhe8p9EYNlqI1nGRKCyiOM+/jtCQN0XbcRkp5s2Squ/JTKemrcAwnd8peFnCCErsxDKkIWM3/XnWoafawhtgOo0MGOerYf7WjT+E0V7M2RCSCES6QQWGFg4kQioXILBC+j5dbyEkgVphSt/3C7RQKuwAp7sYzEzFnPJD0yH7Yx3vzEOB8aoqYiumuPtGc7pTn6ygyyCT7QL2FmqLXbBQauJgSAZ4cCQR+kX2JIjxOEBseggwsaMS8iJCl5kSx01Woiz6jPVwc/tQ8UyGy0/0lqIR6m57mIHU+njaPD2SBPiqQoMkaXTp9qFLLYV0mV7ZEn7eE+Pkt3a/TOlJSMswwNiqfvoZhxqK1/Kq5E+F7E3xmujn2Hpbkj4JNWvt5FMN29OrA1p3d17l3qvCYgZ98Fwj3/QON+o07G4ad1ciUx69aoU7q6onamb78osP8WsCG4j7amBGyoOQHhp7Lm9+1sp1qV7iaoqrHh4inujc7kqdX2M+unkW9O0G3MVMl/8lBv/QYWy1HH0Q6OYoGAScjlw9/x7177/uairmLRPn4ueti3X5laQnhIRjP+mWk2i5cAYfUgElDTgbGbdJGmzGL94/RZXuouG7u3XjFor8uZWaxM7YTV9C6N66dzvPjCUeuH45q6xd0/Px07dW+Rep2S+YhiX13MYPs8p1eYtktaYV6pML8WJ8PIikRn5AV/jfZn30dQieRiqnSTfKFOICQKybNu+jaoXsgVsrvwbACJwHzrh0BDkkgIIG/kPH5rfpRi0N7Oz6zI2jzB4eudEk3AWCKnpPoE7SecuksyrwWIXprGLxkEZxY0tOjIDsg/kFZSzTY3vEeZpeCjtFWoojz44lwQyjDDhLLZbZ+j+bKUQl3nUG+Z2undEQykqTW/ILzO0LyLClQwKuyBhceVxny7YzgVxbZbJ82qyTljGKoNMMB/3z1nx8/eVDb5HHywO9rTKUy85LyuOcZKD+iIZF2ZkxCUDvM2ojj6Unn7JiYtCEl6Dsw8T39OTpDv+EIDHxOpJ79F+bUpUAX1iGeb0dsCS56/BSccgcOAFBmfBwGzX+YeNouc4f/o4r+u8wi+8wiquqwqjr/uqxhIjhr7K87ivKxbA4ziPq+e9qfCvbhtNnrz2oyatjNGdV95onBaRMqQhEwywQ8A7Gs1OeqSuexURUw/BX9+PPE0LfjDlKWir0rzAC4npz/yAls3pFlx0kPyBbEP0P7TdPBryX/Q1efR/FJ7Jvwf/AgqDR6G6AfF9AAAAAElFTkSuQmCC" title="Navent" width="65" height="30">
+    </a>
+  </div>
+</div>
+</div>
+
+    </div>
+  </footer>
 </body>
+<script src="home.js"></script>
+
 </html>
